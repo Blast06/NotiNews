@@ -1,6 +1,7 @@
 package com.example.juliod07.news_reader_app.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import com.example.juliod07.news_reader_app.Common.Common;
 import com.example.juliod07.news_reader_app.Interface.IconBetterIdeaService;
 import com.example.juliod07.news_reader_app.Interface.ItemClickListener;
+import com.example.juliod07.news_reader_app.ListNews;
 import com.example.juliod07.news_reader_app.Model.IconBetterIdea;
 import com.example.juliod07.news_reader_app.Model.WebSite;
 import com.example.juliod07.news_reader_app.R;
@@ -40,6 +42,7 @@ public class ListSourceAdapter extends RecyclerView.Adapter<ListSourceViewHolder
     public ListSourceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.source_layout,parent,false);
+
         return  new ListSourceViewHolder(itemView);
     }
 
@@ -72,7 +75,14 @@ public class ListSourceAdapter extends RecyclerView.Adapter<ListSourceViewHolder
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-                
+                Intent intent = new Intent(context, ListNews.class);
+                intent.putExtra("source",webSite.getSources().get(position).getId());
+                intent.putExtra("sortBy",webSite.getSources().get(position).getSortByAvailable().get(0)); //Para obtener el metodo de ordenar por default
+                context.startActivity(intent);
+
+
+
+
             }
         });
 

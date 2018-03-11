@@ -24,6 +24,7 @@ public class ListSourceViewHolder extends RecyclerView.ViewHolder implements Vie
 
         source_image = (CircleImageView) itemView.findViewById(R.id.source_image);
         source_title = (TextView) itemView.findViewById(R.id.source_name);
+        itemView.setOnClickListener(this);
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
